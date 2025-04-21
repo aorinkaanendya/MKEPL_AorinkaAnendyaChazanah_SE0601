@@ -10,7 +10,12 @@ public class Kamar {
     private Date tanggalCheckin;
     private Date tanggalCheckout;
 
+    private static final int BIAYA_TAMBAHAN_PER_TAMU = 100000;
+
     public Kamar(String jenisKamar, int jumlahTamu, int jumlahMalam, double hargaPerMalam, Date tanggalCheckin, Date tanggalCheckout) {
+        if (jumlahTamu < 1 || jumlahMalam < 1 || hargaPerMalam <= 0) {
+            throw new IllegalArgumentException("Input data kamar tidak valid.");
+        }
         this.jenisKamar = jenisKamar;
         this.jumlahTamu = jumlahTamu;
         this.jumlahMalam = jumlahMalam;
@@ -31,7 +36,7 @@ public class Kamar {
     public double hitungTotalBiaya() {
         double total = hargaPerMalam * jumlahMalam;
         if (jumlahTamu > 2) {
-            total += (jumlahTamu - 2) * 100000;
+            total += (jumlahTamu - 2) * BIAYA_TAMBAHAN_PER_TAMU;
         }
         return total;
     }

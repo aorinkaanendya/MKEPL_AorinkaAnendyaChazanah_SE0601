@@ -5,6 +5,8 @@ public class Pembayaran {
     private boolean sudahDibayar;
     private boolean statusAktif;
 
+    private static final int DISKON_VOUCHER = 50000;
+
     public Pembayaran(String kodeVoucher, boolean sudahDibayar, boolean statusAktif) {
         this.kodeVoucher = kodeVoucher;
         this.sudahDibayar = sudahDibayar;
@@ -19,11 +21,8 @@ public class Pembayaran {
 
     public double hitungTotalBiaya(double totalBiayaKamar) {
         double total = totalBiayaKamar;
-        if (kodeVoucher != null && kodeVoucher.length() > 3) {
-            total -= 50000;
-        }
-        if (!statusAktif) {
-            total = 0;
+        if (statusAktif && kodeVoucher != null && kodeVoucher.length() > 3) {
+            total -= DISKON_VOUCHER;
         }
         return total;
     }
