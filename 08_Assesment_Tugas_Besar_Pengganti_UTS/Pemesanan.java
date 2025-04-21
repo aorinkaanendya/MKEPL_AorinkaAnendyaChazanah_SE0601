@@ -12,11 +12,31 @@ public class Pemesanan {
     }
 
     public void cetakDetailPemesanan() {
+        printHeader();
+        cetakInformasiPemesan();
+        cetakInformasiKamar();
+        cetakInformasiPembayaran();
+        cetakTotalBiaya();
+    }
+
+    private void printHeader() {
+        System.out.println("=== DETAIL PEMESANAN ===");
+    }
+
+    private void cetakInformasiPemesan() {
         pemesan.printInformasi();
+    }
+
+    private void cetakInformasiKamar() {
         kamar.printInformasi();
+    }
+
+    private void cetakInformasiPembayaran() {
         pembayaran.printInformasi();
-        double totalBiaya = kamar.hitungTotalBiaya();
-        totalBiaya = pembayaran.hitungTotalBiaya(totalBiaya);
-        System.out.println("Total Biaya  : Rp " + totalBiaya);
+    }
+
+    private void cetakTotalBiaya() {
+        System.out.println("Total Biaya  : Rp "
+                + pembayaran.hitungTotalBiaya(kamar.hitungTotalBiaya()));
     }
 }

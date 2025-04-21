@@ -18,5 +18,6 @@ public class HotelRoomBooking {
 
         // Cetak detail pemesanan
         pemesanan.cetakDetailPemesanan();
+
     }
 }
