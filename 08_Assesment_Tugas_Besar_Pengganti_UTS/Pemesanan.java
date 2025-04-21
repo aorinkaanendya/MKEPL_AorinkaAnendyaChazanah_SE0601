@@ -36,7 +36,10 @@ public class Pemesanan {
     }
 
     private void cetakTotalBiaya() {
-        System.out.println("Total Biaya  : Rp "
-                + pembayaran.hitungTotalBiaya(kamar.hitungTotalBiaya()));
+        System.out.println("Total Biaya  : Rp " + getTotalBiayaSetelahDiskon());
+    }
+
+    private double getTotalBiayaSetelahDiskon() {
+        return pembayaran.hitungTotalBiaya(kamar.hitungTotalBiaya());
     }
 }
